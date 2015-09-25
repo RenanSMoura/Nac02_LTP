@@ -86,5 +86,23 @@ public class VeiculoDao extends Dao {
 			return retorno;
 	}
 
+	public void alterarPlaca(Veiculo veiculo) throws SQLException, ClassNotFoundException {
+		
+			ComandosString cs = new ComandosString();
+			Connection connection = getConnection();
+			
+				PreparedStatement pstmt = connection.prepareStatement(cs.getUpdatePlaca());
+				pstmt.setString(1, veiculo.getPlacaNova());
+				pstmt.setString(2, veiculo.getPlaca());
+		
+				pstmt.executeUpdate();
+				connection.commit();
+				pstmt.close();
+				connection.close();
+		
+				
+	}
+
+	
 
 }

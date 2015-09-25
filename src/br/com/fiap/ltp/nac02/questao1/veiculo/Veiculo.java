@@ -6,13 +6,20 @@ public class Veiculo {
 	private String placa;
 	private String ano;
 	private String motor;
+	private String placaNova;
 	
 	
 	public Veiculo() {
 		
 	}
 
+	public String getPlacaNova(){
+		return placaNova;
+	}
 
+	public void setPlacaNova(String placaNova){
+		this.placaNova = placaNova;
+	}
 
 	public String getModelo() {
 		return modelo;
