@@ -2,7 +2,6 @@ package br.com.fiap.ltp.nac02.questao1.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,13 +45,19 @@ public class ServletVeiculoList extends HttpServlet {
 		doGet(request, response);
 		
 		VeiculoDao veiculoDao = new VeiculoDao();			
-		List<Veiculo> veiculo = null;
+		List<Veiculo> lista = null;
 		
 		try {
-			veiculoDao.lista();  
-		      
-		    RequestDispatcher view = request.getRequestDispatcher("list.jsp");  
-		    view.forward(request, response); 
+			
+			// Lista todos os registros existente no Banco de Dados
+			lista = veiculoDao.lista();
+			
+				for (Veiculo veiculo : lista) {
+					System.out.println(veiculo);
+				}
+			request.setAttribute("listaVeiculo", lista);		      
+		   // RequestDispatcher view = request.getRequestDispatcher("list.jsp");  
+		   //view.forward(request, response); 
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

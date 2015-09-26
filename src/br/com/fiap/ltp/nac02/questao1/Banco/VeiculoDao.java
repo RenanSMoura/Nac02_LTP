@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.ArrayList;
+
 import java.util.List;
 
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
@@ -108,23 +109,20 @@ public class VeiculoDao extends Dao {
 	public List<Veiculo> lista()throws SQLException, ClassNotFoundException{
 			ComandosString cs = new ComandosString();
 			Connection connection = getConnection();
-			
-			List<Veiculo> linhas = null;
-			
+			List<Veiculo> lista = new ArrayList<>();
 			PreparedStatement pstmt = connection.prepareStatement(cs.getSelectAll());
-			
 			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next()){
 				Veiculo veiculo = new Veiculo();
-					
 				veiculo.setModelo(rs.getString("modelo"));
 				veiculo.setPlaca(rs.getString("placa"));
 				veiculo.setMotor(rs.getString("motor"));
-				veiculo.setAno(rs.getString("motor"));
-				linhas.add(veiculo);
+				veiculo.setAno(rs.getString("ano"));
+				lista.add(veiculo);
+				System.out.println(veiculo + "A fita pode estar aqui!!!!!");
 			}
-		System.out.println("OIE");
-		return linhas;
+		return lista;
 		
 	}
 
