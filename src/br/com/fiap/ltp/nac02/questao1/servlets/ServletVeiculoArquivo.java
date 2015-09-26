@@ -2,9 +2,8 @@ package br.com.fiap.ltp.nac02.questao1.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,19 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.fiap.ltp.nac02.questao1.Banco.VeiculoDao;
-import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
+import br.com.fiap.ltp.nac02.questao1.arquivo.GeraArquivo;
 
 /**
- * Servlet implementation class ServletVeiculoList
+ * Servlet implementation class ServletVeiculoArquivo
  */
-@WebServlet("/ServletVeiculoList")
-public class ServletVeiculoList extends HttpServlet {
+@WebServlet("/ServletVeiculoArquivo")
+public class ServletVeiculoArquivo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletVeiculoList() {
+    public ServletVeiculoArquivo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,26 +42,35 @@ public class ServletVeiculoList extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	
+		VeiculoDao veiculoDao = new VeiculoDao();
 		
-		VeiculoDao veiculoDao = new VeiculoDao();			
-		List<Veiculo> lista = null;
+		ArrayList<String> linhas = new ArrayList<String>();
+		GeraArquivo arquivo = new GeraArquivo();
+	
 		
-		try {
+			try {
+				linhas.addAll(veiculoDao.listarVeiculo2015());
+			} catch (SQLException e) {
+				System.out.println("<ERRO COM O SGBD: "+e.getMessage()+">");
+			}catch(ClassNotFoundException e){
+				e.printStackTrace();
+			}
 			
-			// Lista todos os registros existente no Banco de Dados
-			lista = veiculoDao.lista();
+			try {
+				arquivo.criaArquivo();
+				arquivo.preencherArquivo(linhas);
+				System.out.println("<ARQUIVO GERADO>");
+			} catch (IOException e) {
+				System.out.println("<ERRO AO CRIAR ARQUIVO: "+e.getMessage()+">");
+			}
 			
-				for (Veiculo veiculo : lista) {
-					System.out.println(veiculo);
-				}
-			request.setAttribute("listaVeiculo", lista);		      
-		    RequestDispatcher view = request.getRequestDispatcher("list.jsp");  
-		   view.forward(request, response); 
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				arquivo.fecharArquivo();
+			} catch (IOException e) {
+				System.out.println("<ERRO COM O ARQUIVO: "+e.getMessage()+">");
+			}
+		
 		
 		
 	}

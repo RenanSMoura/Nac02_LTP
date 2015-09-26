@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.Collection;
 import java.util.List;
 
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
@@ -126,6 +126,23 @@ public class VeiculoDao extends Dao {
 		
 	}
 
-	
+	public Collection<String> listarVeiculo2015() throws SQLException, ClassNotFoundException{
+		Connection connection = getConnection();
+		ComandosString cs = new ComandosString();
+		ArrayList<String> linhas = new ArrayList<String>();
+		PreparedStatement stmtSelect = connection.prepareStatement(cs.getSelect2015());
+		ResultSet rs = stmtSelect.executeQuery();
+		
+		while(rs.next()){
+			String ano = rs.getString("ANO");
+			String placa = rs.getString("PLACA");
+			String modelo = rs.getString("MODELO");
+			String motor = String.valueOf(rs.getDouble("MOTOR"));
+			
+			linhas.add(ano+" , "+placa+" , "+modelo+" , "+motor);
+		}
+		
+		return linhas;
+	}
 
 }

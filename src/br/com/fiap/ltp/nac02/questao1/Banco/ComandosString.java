@@ -15,8 +15,7 @@ public class ComandosString {
 	
 	private String selectAll = new String("SELECT * FROM TB_LTP_VEICULO");
 	
-	private String select2015 = new String ("SELECT * FROM TB_LTP_VEICULO WHERE"
-			+ "ANO = '2014'");
+	private String select2015 = new String ("SELECT * FROM TB_LTP_VEICULO WHERE ANO = '2015'");
 
 	public String getInsert() {
 		System.out.println(insert);
