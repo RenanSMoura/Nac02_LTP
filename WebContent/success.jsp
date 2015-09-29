@@ -7,14 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3> Requisição concluída com sucesso. </h3>
+	<br/>
+	<br/>
+	
+	<a href="main.jsp">Retornar ao Menu Principal</a>
+	
+		
 
-<div>
-	<h2> Deletar Veículo</h2>
-	<form action="ServletVeiculoDelet" method="get">
-	Placa do veículo: <input type="text" name="placa"/>
-	<input type="submit" value="Salvar"/> <input type="reset" value="Limpar"/> </br>
-	</form>
-	<button onclick="location.href='main.jsp'">Menu Principal</button></br>
-</div>
 </body>
 </html>

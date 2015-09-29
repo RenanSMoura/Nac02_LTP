@@ -19,60 +19,51 @@ import br.com.fiap.ltp.nac02.questao1.arquivo.GeraArquivo;
 @WebServlet("/ServletVeiculoArquivo")
 public class ServletVeiculoArquivo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletVeiculoArquivo() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ServletVeiculoArquivo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	
+
 		VeiculoDao veiculoDao = new VeiculoDao();
-		
+
 		ArrayList<String> linhas = new ArrayList<String>();
 		GeraArquivo arquivo = new GeraArquivo();
-	
-		
-			try {
-				linhas.addAll(veiculoDao.listarVeiculo2015());
-			} catch (SQLException e) {
-				System.out.println("<ERRO COM O SGBD: "+e.getMessage()+">");
-			}catch(ClassNotFoundException e){
-				e.printStackTrace();
-			}
-			
-			try {
-				arquivo.criaArquivo();
-				arquivo.preencherArquivo(linhas);
-				System.out.println("<ARQUIVO GERADO>");
-			} catch (IOException e) {
-				System.out.println("<ERRO AO CRIAR ARQUIVO: "+e.getMessage()+">");
-			}
-			
-			try {
-				arquivo.fecharArquivo();
-			} catch (IOException e) {
-				System.out.println("<ERRO COM O ARQUIVO: "+e.getMessage()+">");
-			}
-		
-		
-		
+
+
+		try {
+			linhas.addAll(veiculoDao.listarVeiculo2015());
+		} catch (SQLException e) {
+			System.out.println("<ERRO COM O SGBD: "+e.getMessage()+">");
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}
+
+		try {
+			arquivo.criaArquivo();
+			arquivo.preencherArquivo(linhas);
+			response.sendRedirect("success.jsp"); // Criar jsp para arquivo!
+		} catch (IOException e) {
+			System.out.println("<ERRO AO CRIAR ARQUIVO: "+e.getMessage()+">");
+		}
+
+		try {
+			arquivo.fecharArquivo();
+		} catch (IOException e) {
+			System.out.println("<ERRO COM O ARQUIVO: "+e.getMessage()+">");
+		}
+
 	}
+
 
 }

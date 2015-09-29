@@ -35,7 +35,7 @@
 
 
 
-
+	<button onclick="location.href='main.jsp'">Menu Principal</button></br>
 
 
 </body>

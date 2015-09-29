@@ -32,15 +32,6 @@ public class ServletVeiculoChange extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		
 		Veiculo veiculo = new Veiculo();
 		VeiculoDao veiculoDao = new VeiculoDao();
 		boolean verifica = false;
@@ -51,7 +42,7 @@ public class ServletVeiculoChange extends HttpServlet {
 				verifica = veiculoDao.buscar(veiculo);
 					if(verifica){
 						veiculoDao.alterarPlaca(veiculo);
-						System.out.println("Alterado com Sucesso!");
+						response.sendRedirect("success.jsp");
 					}
 			
 			

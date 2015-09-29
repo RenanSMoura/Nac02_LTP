@@ -43,8 +43,7 @@ public class ServletVeiculoDelet extends HttpServlet {
 			if(verifica)
 
 				veiculoDao.deletar(veiculo);
-			System.out.println("Excluido com sucesso");
-
+			response.sendRedirect("success.jsp");
 
 
 		}catch (SQLException e){
@@ -58,17 +57,6 @@ public class ServletVeiculoDelet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-
-
-
-
-
-	}
+	
 
 }

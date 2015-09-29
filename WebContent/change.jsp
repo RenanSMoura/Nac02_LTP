@@ -9,12 +9,14 @@
 <body>
 
 	<div>
-		<form action="ServletVeiculoChange" method="post">
+		<form action="ServletVeiculoChange" method="get">
 			<h2> Alterar a Placa do Veículo</h2>
-			Placa Antiga<input type="text" name="placa"/>
-			Placa Nova<input type="text" name="placaNova"/>
-			<input type="submit" value="Salvar"/> <input type="reset" value="Limpar"/> <input type="button" value="Voltar"/>
+			Placa Antiga  <input type="text" name="placa"/><br/>
+			Placa Nova  <input type="text" name="placaNova"/><br/>
+			<input type="submit" value="Salvar"/> <input type="reset" value="Limpar"/> <br/>
+			
 		</form>
+		<button onclick="location.href='main.jsp'">Menu Principal</button></br>
 	</div>
 </body>
 </html>

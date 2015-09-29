@@ -31,17 +31,7 @@ public class ServletVeiculo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		
+	
 		Veiculo veiculo = new Veiculo();
 		VeiculoDao veiculoDao = new VeiculoDao();
 		
@@ -52,14 +42,14 @@ public class ServletVeiculo extends HttpServlet {
 			veiculo.setPlaca(request.getParameter("placa"));
 			veiculo.setMotor(request.getParameter("motor"));			
 			veiculoDao.inserir(veiculo);
+			response.sendRedirect("success.jsp");
 			
 		}catch(Exception e){
 			e.getMessage();
 		}
 		
 		
-		
-		
 	}
+
 
 }
