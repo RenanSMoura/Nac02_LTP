@@ -15,7 +15,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 /**
  * Servlet implementation class ServletVeiculoDelet
  */
-@WebServlet("/ServletVeiculoDelet")
+@WebServlet("/excluir")
 public class ServletVeiculoDelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,35 +28,33 @@ public class ServletVeiculoDelet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		Veiculo veiculo = new Veiculo();
 		VeiculoDao veiculoDao = new VeiculoDao();
 		boolean verifica = false;
 
-		try{
+		try {
 			veiculo.setPlaca(request.getParameter("placa"));
 			verifica = veiculoDao.verificaVeiculo(veiculo);
-			if(verifica)
-
+			if (verifica)
 				veiculoDao.deletar(veiculo);
-			response.sendRedirect("success.jsp");
+				response.sendRedirect("lista");
 
-
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Deu merda!");
 		} catch (ClassNotFoundException e) {
-			
+
 			e.printStackTrace();
 			System.out.println("Deu merda na classe!");
 		}
 
 	}
-
-	
 
 }

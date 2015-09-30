@@ -12,7 +12,7 @@ public class ComandosString {
 	
 	private String updatePlaca = new String ("UPDATE TB_LTP_VEICULO SET PLACA = ? WHERE PLACA = ?");
 	
-	private String selectAll = new String("SELECT * FROM TB_LTP_VEICULO");
+	private String selectAll = new String("SELECT * FROM TB_LTP_VEICULO ORDER BY ID_VEICULO ASC");
 	
 	private String select2015 = new String ("SELECT * FROM TB_LTP_VEICULO WHERE ANO = '2015'");
 
