@@ -15,7 +15,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 /**
  * Servlet implementation class ServletVeiculo
  */
-@WebServlet("/ServletVeiculo")
+@WebServlet("/adicionar")
 public class ServletVeiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +42,7 @@ public class ServletVeiculo extends HttpServlet {
 			veiculo.setPlaca(request.getParameter("placa"));
 			veiculo.setMotor(request.getParameter("motor"));			
 			veiculoDao.inserir(veiculo);
-			response.sendRedirect("ServletVeiculoList");
+			response.sendRedirect("lista");
 			
 		}catch(Exception e){
 			e.getMessage();

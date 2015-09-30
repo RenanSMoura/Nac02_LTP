@@ -16,7 +16,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 /**
  * Servlet implementation class ServletVeiculoList
  */
-@WebServlet("/ServletVeiculoList")
+@WebServlet("/lista")
 public class ServletVeiculoList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

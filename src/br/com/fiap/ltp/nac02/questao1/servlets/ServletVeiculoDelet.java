@@ -15,7 +15,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 /**
  * Servlet implementation class ServletVeiculoDelet
  */
-@WebServlet("/ServletVeiculoDelet")
+@WebServlet("/delete")
 public class ServletVeiculoDelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
