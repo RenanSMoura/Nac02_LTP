@@ -14,6 +14,8 @@
 	    <ul class="pure-menu-list">
 	        <li class="pure-menu-item"><a href="lista" class="pure-menu-link">Listar Veículo</a></li>
 	        <li class="pure-menu-item"><a href="add.jsp" class="pure-menu-link">Adicionar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="change.jsp" class="pure-menu-link">Alterar Placa</a></li>
+	        <li class="pure-menu-item"><a href="delete.jsp" class="pure-menu-link">Excluir Veículo</a></li>
 	        <li class="pure-menu-item"><a href="gerar" class="pure-menu-link">Gerar Listagem CVS</a></li>
 	    </ul>
 	</div>
@@ -28,13 +30,10 @@
 	            <th>Placa</th>
 	            <th>Ano</th>
 	            <th>Motor</th>
-	            <th>Ações</th>
+	            <!--th>Ações</th-->
 	        </tr>
 	    </thead>
-		
-		<!-- cria o DAO -->
-		<%--  <jsp:useBean id="dao" class="br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao"/> --%>
-		
+	
 	    <tbody>
 	    	<c:forEach items="${veiculos}" var="veiculo">
 			    <tr>      
@@ -43,9 +42,9 @@
 			        <td>${veiculo.placa}</td>
 			        <td>${veiculo.ano}</td>
 			        <td>${veiculo.motor}</td>
-			        <td>
+			        <!--td>
 		            	<a href="change.jsp?id=${veiculo.id}">Alterar</a> | <a href="delete?id=${veiculo.id}">Excluir</a>
-		            </td> 
+		            </td--> 
 			    </tr>
 			</c:forEach>
 	    </tbody>

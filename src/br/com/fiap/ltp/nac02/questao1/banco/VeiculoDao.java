@@ -110,7 +110,6 @@ public class VeiculoDao extends Dao {
 
 	public Collection<String> listarVeiculo2015() throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
-		ComandosString cs = new ComandosString();
 		ArrayList<String> linhas = new ArrayList<String>();
 		PreparedStatement stmtSelect = connection.prepareStatement(cs.getSelect2015());
 		ResultSet rs = stmtSelect.executeQuery();
