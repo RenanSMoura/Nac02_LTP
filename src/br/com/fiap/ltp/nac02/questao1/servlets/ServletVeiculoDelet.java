@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.fiap.ltp.nac02.questao1.Banco.VeiculoDao;
+import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.fiap.ltp.nac02.questao1.Banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.arquivo.GeraArquivo;
+import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 
 /**
  * Servlet implementation class ServletVeiculoArquivo

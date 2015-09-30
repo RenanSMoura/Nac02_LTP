@@ -6,7 +6,7 @@ DROP TABLE TB_LTP_VEICULO CASCADE CONSTRAINTS;
     MODELO VARCHAR2(50) NOT NULL,
     PLACA VARCHAR2(8) NOT NULL,
     ANO VARCHAR(4) NOT NULL,
-    motor decimal(2,1) not null,
+    MOTOR decimal(2,1) not null,
     CONSTRAINT FK_LTP_VEICULO primary key (id_veiculo)
     ) SEGMENT CREATION IMMEDIATE;
   

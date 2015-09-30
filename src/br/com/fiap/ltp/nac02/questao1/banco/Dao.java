@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.Banco;
+package br.com.fiap.ltp.nac02.questao1.banco;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,8 +20,8 @@ public class Dao {
 //		String senha = new String("221289");
 //		
 		
-		String usuario = "OPS$RM74390";//seu RM
-		String senha = "140993";//sua data de nascimento
+		String usuario = "OPS$RM75011";//seu RM
+		String senha = "081082";//sua data de nascimento
 		String jdbcUrl = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL"; //acesso externo
 		//String jdbcUrl = "jdbc:oracle:thin:@192.168.60.15:1521:ORCL"; //acesso interno
 		//String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:XE"; //acesso local express edition

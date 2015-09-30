@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.fiap.ltp.nac02.questao1.Banco.VeiculoDao;
+import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
@@ -43,8 +43,8 @@ public class ServletVeiculoList extends HttpServlet {
 			// Lista todos os registros existente no Banco de Dados
 			lista = veiculoDao.lista();
 		
-			getServletContext().setAttribute("veiculo", lista);
-			response.sendRedirect("list.jsp");
+			getServletContext().setAttribute("veiculos", lista);
+			response.sendRedirect("main.jsp");
 		    
 
 			//getServletContext().setAttribute("veiculo", lista);

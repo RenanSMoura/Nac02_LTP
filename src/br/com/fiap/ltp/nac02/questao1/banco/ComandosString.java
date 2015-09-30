@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.Banco;
+package br.com.fiap.ltp.nac02.questao1.banco;
 
 public class ComandosString {
 	
