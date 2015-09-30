@@ -13,7 +13,7 @@ public class GeraArquivo {
 	// Métodos.
 
 	public void criaArquivo() throws IOException {
-		path = new FileWriter("E:/veiculos2015.csv");
+		path = new FileWriter("C:/veiculos2015.csv");
 		output = new PrintWriter(path);
 	}
 
