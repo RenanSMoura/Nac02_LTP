@@ -120,7 +120,6 @@ public class VeiculoDao extends Dao {
 				veiculo.setMotor(rs.getString("motor"));
 				veiculo.setAno(rs.getString("ano"));
 				lista.add(veiculo);
-				System.out.println(veiculo + "A fita pode estar aqui!!!!!");
 			}
 		return lista;
 		

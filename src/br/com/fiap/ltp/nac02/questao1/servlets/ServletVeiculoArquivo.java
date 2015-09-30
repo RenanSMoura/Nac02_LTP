@@ -43,20 +43,16 @@ public class ServletVeiculoArquivo extends HttpServlet {
 
 		try {
 			linhas.addAll(veiculoDao.listarVeiculo2015());
+			arquivo.criaArquivo();
+			arquivo.preencherArquivo(linhas);
+			response.sendRedirect("success.jsp"); // Criar jsp para arquivo!
+			
 		} catch (SQLException e) {
 			System.out.println("<ERRO COM O SGBD: "+e.getMessage()+">");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 		}
-
-		try {
-			arquivo.criaArquivo();
-			arquivo.preencherArquivo(linhas);
-			response.sendRedirect("success.jsp"); // Criar jsp para arquivo!
-		} catch (IOException e) {
-			System.out.println("<ERRO AO CRIAR ARQUIVO: "+e.getMessage()+">");
-		}
-
+	
 		try {
 			arquivo.fecharArquivo();
 		} catch (IOException e) {

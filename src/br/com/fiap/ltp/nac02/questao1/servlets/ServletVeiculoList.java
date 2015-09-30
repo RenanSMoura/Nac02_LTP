@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +33,7 @@ public class ServletVeiculoList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		
 		VeiculoDao veiculoDao = new VeiculoDao();			
 		List<Veiculo> lista = null;
@@ -42,16 +42,16 @@ public class ServletVeiculoList extends HttpServlet {
 			
 			// Lista todos os registros existente no Banco de Dados
 			lista = veiculoDao.lista();
-			
-				for (Veiculo veiculo : lista) {
-					System.out.println(veiculo);
-				}
-			request.setAttribute("listaVeiculo", lista);		      
-		    RequestDispatcher view = request.getRequestDispatcher("list.jsp");  
-		   view.forward(request, response); 
+		
+			getServletContext().setAttribute("veiculo", lista);
+			response.sendRedirect("list.jsp");
+		    
+
+			//getServletContext().setAttribute("veiculo", lista);
+			//response.sendRedirect("index.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
