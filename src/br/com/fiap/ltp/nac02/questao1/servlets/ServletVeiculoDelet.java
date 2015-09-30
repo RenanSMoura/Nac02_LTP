@@ -44,7 +44,7 @@ public class ServletVeiculoDelet extends HttpServlet {
 			verifica = veiculoDao.verificaVeiculo(veiculo);
 			if (verifica)
 				veiculoDao.deletar(veiculo);
-				response.sendRedirect("lista");
+			response.sendRedirect("lista");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

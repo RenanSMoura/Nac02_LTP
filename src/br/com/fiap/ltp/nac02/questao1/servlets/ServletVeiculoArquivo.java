@@ -16,7 +16,7 @@ import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 /**
  * Servlet implementation class ServletVeiculoArquivo
  */
-@WebServlet("/ServletVeiculoArquivo")
+@WebServlet("/gerar")
 public class ServletVeiculoArquivo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,37 +29,36 @@ public class ServletVeiculoArquivo extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 
 		VeiculoDao veiculoDao = new VeiculoDao();
 
 		ArrayList<String> linhas = new ArrayList<String>();
 		GeraArquivo arquivo = new GeraArquivo();
 
-
 		try {
 			linhas.addAll(veiculoDao.listarVeiculo2015());
 			arquivo.criaArquivo();
 			arquivo.preencherArquivo(linhas);
 			response.sendRedirect("success.jsp"); // Criar jsp para arquivo!
-			
+
 		} catch (SQLException e) {
-			System.out.println("<ERRO COM O SGBD: "+e.getMessage()+">");
-		}catch(ClassNotFoundException e){
+			System.out.println("<ERRO COM O SGBD: " + e.getMessage() + ">");
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	
+
 		try {
 			arquivo.fecharArquivo();
 		} catch (IOException e) {
-			System.out.println("<ERRO COM O ARQUIVO: "+e.getMessage()+">");
+			System.out.println("<ERRO COM O ARQUIVO: " + e.getMessage() + ">");
 		}
 
 	}
-
 
 }
