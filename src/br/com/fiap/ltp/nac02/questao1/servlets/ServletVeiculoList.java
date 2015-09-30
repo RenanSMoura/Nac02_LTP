@@ -38,7 +38,7 @@ public class ServletVeiculoList extends HttpServlet {
 
 		VeiculoDao veiculoDao = new VeiculoDao();
 		List<Veiculo> lista = null;
-				
+
 		try {
 
 			// Lista todos os registros existente no Banco de Dados

@@ -9,6 +9,16 @@
 	<link rel="stylesheet" href="assets/veiculo.css">
 </head>
 <body>
+	<div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+	    <ul class="pure-menu-list">
+	        <li class="pure-menu-item"><a href="lista" class="pure-menu-link">Listar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="add.jsp" class="pure-menu-link">Adicionar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="change.jsp" class="pure-menu-link">Alterar Placa</a></li>
+	        <li class="pure-menu-item"><a href="delete.jsp" class="pure-menu-link">Excluir Veículo</a></li>
+	        <li class="pure-menu-item"><a href="gerar" class="pure-menu-link">Gerar Listagem CVS</a></li>
+	    </ul>
+	</div>
+	
 	<h1>O arquivo foi gerado com sucesso.</h1>
 	<p><a href="C:/veiculos2015.csv">C:/veiculos2015.csv</a></p>
 	<p><br><a href="listar">Retornar ao Menu Principal</a></p>
