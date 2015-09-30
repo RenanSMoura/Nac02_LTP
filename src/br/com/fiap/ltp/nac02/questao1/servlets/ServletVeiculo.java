@@ -42,13 +42,19 @@ public class ServletVeiculo extends HttpServlet {
 			veiculo.setPlaca(request.getParameter("placa"));
 			veiculo.setMotor(request.getParameter("motor"));			
 			veiculoDao.inserir(veiculo);
-			response.sendRedirect("success.jsp");
+			response.sendRedirect("ServletVeiculoList");
 			
 		}catch(Exception e){
 			e.getMessage();
 		}
 		
 		
+	}
+	
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
 	}
 
 

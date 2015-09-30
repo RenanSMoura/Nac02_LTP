@@ -38,6 +38,7 @@
 	    <tbody>
 	    	<c:forEach items="${veiculos}" var="veiculo">
 			    <tr>      
+			        <td>1</td>
 			        <td>${veiculo.modelo}</td>
 			        <td>${veiculo.placa}</td>
 			        <td>${veiculo.ano}</td>

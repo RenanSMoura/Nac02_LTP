@@ -10,8 +10,7 @@ public class ComandosString {
 			
 	private String selectPlaca = new String("SELECT PLACA FROM TB_LTP_VEICULO WHERE PLACA = ?");
 	
-	private String updatePlaca = new String ("UPDATE TB_LTP_VEICULO SET PLACA = ?"
-			+ "WHERE PLACA =?");
+	private String updatePlaca = new String ("UPDATE TB_LTP_VEICULO SET PLACA = ? WHERE PLACA = ?");
 	
 	private String selectAll = new String("SELECT * FROM TB_LTP_VEICULO");
 	

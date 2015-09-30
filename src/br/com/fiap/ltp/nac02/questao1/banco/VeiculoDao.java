@@ -11,11 +11,9 @@ import java.util.List;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 public class VeiculoDao extends Dao {
+	ComandosString cs = new ComandosString();
 
 	public void inserir(Veiculo veiculo) throws ClassNotFoundException, SQLException {
-
-		ComandosString cs = new ComandosString();
-
 		Connection connection = getConnection();
 
 		PreparedStatement pstmt = connection.prepareStatement(cs.getInsert());
@@ -32,8 +30,6 @@ public class VeiculoDao extends Dao {
 	}
 
 	public boolean buscar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-
-		ComandosString cs = new ComandosString();
 		Connection connection = getConnection();
 
 		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectPlaca());
@@ -52,9 +48,6 @@ public class VeiculoDao extends Dao {
 	}
 
 	public void deletar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-
-		ComandosString cs = new ComandosString();
-
 		Connection connection = getConnection();
 
 		PreparedStatement pstmt = connection.prepareStatement(cs.getDelete());
@@ -80,8 +73,6 @@ public class VeiculoDao extends Dao {
 	}
 
 	public void alterarPlaca(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-
-		ComandosString cs = new ComandosString();
 		Connection connection = getConnection();
 
 		PreparedStatement pstmt = connection.prepareStatement(cs.getUpdatePlaca());
@@ -96,7 +87,6 @@ public class VeiculoDao extends Dao {
 	}
 
 	public List<Veiculo> lista() throws SQLException, ClassNotFoundException {
-		ComandosString cs = new ComandosString();
 		Connection connection = getConnection();
 		List<Veiculo> lista = new ArrayList<>();
 		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectAll());
@@ -104,13 +94,16 @@ public class VeiculoDao extends Dao {
 
 		while (rs.next()) {
 			Veiculo veiculo = new Veiculo();
-			veiculo.setId(rs.getString("id"));
+			System.out.println(rs);
+			veiculo.setId(rs.getString("id_veiculo"));
 			veiculo.setModelo(rs.getString("modelo"));
 			veiculo.setPlaca(rs.getString("placa"));
 			veiculo.setMotor(rs.getString("motor"));
 			veiculo.setAno(rs.getString("ano"));
 			lista.add(veiculo);
 		}
+		connection.close();
+		
 		return lista;
 
 	}
