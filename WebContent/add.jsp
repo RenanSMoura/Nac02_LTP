@@ -46,13 +46,5 @@
 	        </div>
 	    </fieldset>
 	</form>
-
-	<!-- <form action="ServletVeiculo" method="GET">
-		Modelo: <input type ="text"name="modelo" /> <br/>
-		Placa: <input type="text" name="placa"  maxlength="9"/><br/>
-		Motor: <input type="text"  name="motor" id="motor" onkeypress="//return SomenteNumero(event)" /><br/>
-		Ano de Fabricação: <input type="text" value="" name="ano" onkeypress="return SomenteNumero(event)"/><br/>
-		<input type="submit" value="Salvar"/> <input type="reset" value="Limpar"/> <input type="button" value="Voltar"/>
-	</form> -->
 </body>
 </html>
