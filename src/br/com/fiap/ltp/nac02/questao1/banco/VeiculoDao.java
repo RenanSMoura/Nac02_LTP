@@ -103,7 +103,7 @@ public class VeiculoDao extends Dao {
 			lista.add(veiculo);
 		}
 		connection.close();
-		
+
 		return lista;
 
 	}
