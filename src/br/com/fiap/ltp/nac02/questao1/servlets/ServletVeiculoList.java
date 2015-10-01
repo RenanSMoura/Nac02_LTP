@@ -14,32 +14,33 @@ import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
- * Servlet implementation class ServletVeiculoList
+ * @author rm74390
+ * 
+ * Servlet responsável por realizar a listagem das instâncias e mostra-lás na página jsp
+ * @see main.jsp
+ * @see VeiculoDao.java 
+ * @throws ServletException
+ * @throws  IOException
  */
 @WebServlet("/lista")
 public class ServletVeiculoList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	
 	public ServletVeiculoList() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
 			VeiculoDao veiculoDao = new VeiculoDao();
 			List<Veiculo> lista = null;
-			// Lista todos os registros existente no Banco de Dados
+			
 			lista = veiculoDao.lista();
 
 			getServletContext().setAttribute("veiculos", lista);

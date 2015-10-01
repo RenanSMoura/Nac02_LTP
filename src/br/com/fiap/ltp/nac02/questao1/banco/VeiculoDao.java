@@ -8,15 +8,37 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
+
+
+import br.com.fiap.ltp.nac02.questao1.servlets.ServletVeiculoList;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
+
+/**
+ * @author rm74390
+ * Comandos de negócio do sistema
+ * 
+ * @see ComandosString
+ * @see ConnectionFactory
+ */
 
 public class VeiculoDao {
 	private Connection connection;
 	ComandosString cs = new ComandosString();
 	
+	/*
+	 * Construtor da classe VeiculoDao
+	 */
 	public VeiculoDao() throws ClassNotFoundException {
 		this.connection = new ConnectionFactory().getConnection();
 	}
+	
+	/**
+	 * Insere uma instancia da classe  veículo no banco de dados
+	 * @param veiculo
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 
 	public void inserir(Veiculo veiculo) throws ClassNotFoundException, SQLException {
 		
@@ -32,6 +54,13 @@ public class VeiculoDao {
 		connection.close();
 
 	}
+	/**
+	 * Realiza a busca por uma instancia da clase veículo no banco de dados
+	 * @param veiculo
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 
 	public boolean buscar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
 		
@@ -49,6 +78,12 @@ public class VeiculoDao {
 		else
 			return true;
 	}
+	/**
+	 * Deleta uma instância da classe veículo do bando de dados
+	 * @param veiculo
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 
 	public void deletar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
 		
@@ -61,7 +96,13 @@ public class VeiculoDao {
 		connection.close();
 
 	}
-
+	/**
+	 *  Procura uma instância da classe veículo no banco de dados
+	 * @param veiculo
+	 * @return Confirmação ou não da existência de determinada instância de veículo
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public boolean verificaVeiculo(Veiculo veiculo) throws SQLException, ClassNotFoundException {
 		boolean retorno = false;
 		VeiculoDao veiculoDao = new VeiculoDao();
@@ -74,6 +115,12 @@ public class VeiculoDao {
 		return retorno;
 	}
 
+	/**
+	 * Altera o atributo .getPlaca() de uma instância da classe veículo do banco de dados
+	 * @param veiculo
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public void alterarPlaca(Veiculo veiculo) throws SQLException, ClassNotFoundException {
 		
 		PreparedStatement pstmt = connection.prepareStatement(cs.getUpdatePlaca());
@@ -86,6 +133,13 @@ public class VeiculoDao {
 		connection.close();
 
 	}
+	/**
+	 * Realiza a listagem de todas as instâncias que estão contidas dentro do banco de dados.
+	 * @see ServletVeiculoList.java
+	 * @return Lista contendo instâncias da classe Veículos
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 
 	public List<Veiculo> lista() throws SQLException, ClassNotFoundException {
 		List<Veiculo> lista = new ArrayList<>();
@@ -94,7 +148,6 @@ public class VeiculoDao {
 
 		while (rs.next()) {
 			Veiculo veiculo = new Veiculo();
-			System.out.println(rs);
 			veiculo.setId(rs.getString("id_veiculo"));
 			veiculo.setModelo(rs.getString("modelo"));
 			veiculo.setPlaca(rs.getString("placa"));
@@ -107,6 +160,13 @@ public class VeiculoDao {
 		return lista;
 
 	}
+	/**
+	 * Realiza uma listagem de todos os veículos que possuem seu ano de fabricação igual a 2015 e adiciona o resultado 
+	 * da listagem em um arquivo @see GeraArquivo.java
+	 * @return lista de veículos 
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 
 	public Collection<String> listarVeiculo2015() throws SQLException, ClassNotFoundException {
 		ArrayList<String> linhas = new ArrayList<String>();

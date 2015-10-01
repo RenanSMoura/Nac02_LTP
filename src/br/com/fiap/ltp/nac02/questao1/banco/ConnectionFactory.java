@@ -3,7 +3,12 @@ package br.com.fiap.ltp.nac02.questao1.banco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * Classe responsável pela conexão com o banco Oracle
+ * @see Connection
+ * @author rm74390
+ *
+ */
 public class ConnectionFactory {
 	public Connection getConnection() throws ClassNotFoundException {
 		try {

@@ -1,5 +1,15 @@
 package br.com.fiap.ltp.nac02.questao1.veiculo;
+/**
+ * 
+ * @author rm74390
+ *
+ *JB classe Veiculo
+ *
+ */
 
+/*
+ * Atributos
+ */
 public class Veiculo {
 	private String id;
 	private String modelo;
@@ -7,10 +17,20 @@ public class Veiculo {
 	private String ano;
 	private String motor;
 	private String placaNova;
+	
+	/*
+	 * Construtor
+	 */
 
 	public Veiculo() {
 
 	}
+	/*
+	 * 
+	 * Métodos Get's and Set's
+	 */
+
+	
 
 	public String getId() {
 		return id;

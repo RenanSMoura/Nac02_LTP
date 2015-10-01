@@ -13,27 +13,31 @@ import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
- * Servlet implementation class ServletVeiculoDelet
+ * 
+ * @author rm74390
+ * 
+ * Servlet responsável pela exclusão de uma instância da Classe Veículo, contida no banco de dados
+ * @see VeiculoDao.java
+ * 
+ * @throws ServletException
+ * @throws  IOException
+ *  
+ * 
  */
 @WebServlet("/excluir")
 public class ServletVeiculoDelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	
 	public ServletVeiculoDelet() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 
 		try {
 
@@ -49,11 +53,11 @@ public class ServletVeiculoDelet extends HttpServlet {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Deu merda!");
+		
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
-			System.out.println("Deu merda na classe!");
+		
 		}
 
 	}

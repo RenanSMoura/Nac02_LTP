@@ -14,50 +14,50 @@ import br.com.fiap.ltp.nac02.questao1.arquivo.GeraArquivo;
 import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 
 /**
- * Servlet implementation class ServletVeiculoArquivo
+ * @author rm74390
+ * 
+ * Servlet responsável pela geração do arquivo.
+ * @see VeiculoDao.java 
+ * @see GerarArquivo.java
+ * @throws ServletException
+ * @throws  IOException
  */
+
 @WebServlet("/gerar")
 public class ServletVeiculoArquivo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public ServletVeiculoArquivo() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		GeraArquivo arquivo = new GeraArquivo();
-		
+
 		try {
 			VeiculoDao veiculoDao = new VeiculoDao();
 
 			ArrayList<String> linhas = new ArrayList<String>();
-			
+
 
 			linhas.addAll(veiculoDao.listarVeiculo2015());
 			arquivo.criaArquivo();
 			arquivo.preencherArquivo(linhas);
-			response.sendRedirect("success.jsp"); // Criar jsp para arquivo!
+			response.sendRedirect("success.jsp");
 
 		} catch (SQLException e) {
-			System.out.println("<ERRO COM O SGBD: " + e.getMessage() + ">");
+			 e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
-		try {
+		finally{
 			arquivo.fecharArquivo();
-		} catch (IOException e) {
-			System.out.println("<ERRO COM O ARQUIVO: " + e.getMessage() + ">");
 		}
+
 
 	}
 

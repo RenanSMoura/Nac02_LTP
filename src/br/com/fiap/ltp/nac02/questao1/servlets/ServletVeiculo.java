@@ -12,26 +12,34 @@ import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
- * Servlet implementation class ServletVeiculo
+ *
+ *@author rm74390
+ *
+ *Servlet responsável por realizar o cadastro do veículo no banco de dados
+ * @see VeiculoDao.java 
+ * 
+ * @throws ServletException
+ * @throws  IOException
+ * 
  */
 @WebServlet("/adicionar")
 public class ServletVeiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public ServletVeiculo() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
+
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+
+	 *   
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 
 		try {
 
@@ -53,7 +61,6 @@ public class ServletVeiculo extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
 		super.init();
 	}
 

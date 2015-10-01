@@ -13,23 +13,28 @@ import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
- * Servlet implementation class ServletVeiculoChange
+ *
+ * @author rm74390
+ * 
+ * Servlet responsável alteração do atribuo PLACA, nas instâncias da classe Veiculo no banco de dados.
+ * @see VeiculoDao.java 
+ * 
+ * @throws ServletException
+ * @throws  IOException
+ * 
  */
 @WebServlet("/atualizar")
 public class ServletVeiculoChange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	
 	public ServletVeiculoChange() {
 		super();
 
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * Método R
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -50,9 +55,8 @@ public class ServletVeiculoChange extends HttpServlet {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Deu merda no SQL");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Mano, deu merda na hora de montar a classe!!!!!!!!!1");
+			
 			e.printStackTrace();
 		}
 
