@@ -12,117 +12,201 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 public class VeiculoDao {
 	private Connection connection;
-	ComandosString cs = new ComandosString();
-	
-	public VeiculoDao() throws ClassNotFoundException {
-		this.connection = new ConnectionFactory().getConnection();
-	}
+	StringsSql sql = new StringsSql();
 
-	public void inserir(Veiculo veiculo) throws ClassNotFoundException, SQLException {
+	public VeiculoDao() {
 		
-		PreparedStatement pstmt = connection.prepareStatement(cs.getInsert());
-		pstmt.setString(1, veiculo.getModelo());
-		pstmt.setString(2, veiculo.getPlaca());
-		pstmt.setString(3, veiculo.getAno());
-		pstmt.setDouble(4, Double.parseDouble(veiculo.getMotor()));
-
-		pstmt.executeUpdate();
-		connection.commit();
-		pstmt.close();
-		connection.close();
-
 	}
 
-	public boolean buscar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
+	public void inserir(Veiculo veiculo) {
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(sql.getInsert());
+			pstmt.setString(1, veiculo.getModelo());
+			pstmt.setString(2, veiculo.getPlaca());
+			pstmt.setString(3, veiculo.getAno());
+			pstmt.setDouble(4, Double.parseDouble(veiculo.getMotor()));
+			pstmt.executeUpdate();
+			connection.commit();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public boolean buscar(Veiculo veiculo) {
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		
-		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectPlaca());
-		pstmt.setString(1, veiculo.getPlaca());
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(sql.getSelectPlaca());
+			pstmt.setString(1, veiculo.getPlaca());
 
-		ResultSet rs = pstmt.executeQuery();
-		String placa = new String("");
+			ResultSet rs = pstmt.executeQuery();
+			String placa = new String("");
 
-		while (rs.next())
-			placa = rs.getString("PLACA");
+			while (rs.next()) {
+				placa = rs.getString("PLACA");
+			}
+			
+			System.out.println(placa + " " + placa.isEmpty());
+			
+			return (!placa.isEmpty()) ? true : false;
 
-		if (placa.isEmpty())
-			return false;
-		else
-			return true;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
-	public void deletar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-		
-		PreparedStatement pstmt = connection.prepareStatement(cs.getDelete());
-		pstmt.setString(1, veiculo.getPlaca());
+	public void deletar(Veiculo veiculo) {
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 
-		pstmt.executeUpdate();
-		connection.commit();
-		pstmt.close();
-		connection.close();
-
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(sql.getDelete());
+			pstmt.setString(1, veiculo.getPlaca());
+			pstmt.executeUpdate();
+			connection.commit();
+			pstmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	public boolean verificaVeiculo(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-		boolean retorno = false;
+	public boolean verificaVeiculo(Veiculo veiculo) {
 		VeiculoDao veiculoDao = new VeiculoDao();
-
-		if (veiculoDao.buscar(veiculo) == true) {
-			retorno = true;
-		} else {
-			retorno = false;
-		}
-		return retorno;
+		System.out.println("-->" + veiculoDao.buscar(veiculo));
+		return (veiculoDao.buscar(veiculo) == true) ? true : false;
 	}
 
-	public void alterarPlaca(Veiculo veiculo) throws SQLException, ClassNotFoundException {
+	public void alterarPlaca(Veiculo veiculo) {
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		
-		PreparedStatement pstmt = connection.prepareStatement(cs.getUpdatePlaca());
-		pstmt.setString(1, veiculo.getPlacaNova());
-		pstmt.setString(2, veiculo.getPlaca());
+		try {
+			PreparedStatement pstmt;
+			pstmt = connection.prepareStatement(sql.getUpdatePlaca());
+			pstmt.setString(1, veiculo.getPlacaNova());
+			pstmt.setString(2, veiculo.getPlaca());
 
-		pstmt.executeUpdate();
-		connection.commit();
-		pstmt.close();
-		connection.close();
-
+			pstmt.executeUpdate();
+			connection.commit();
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	public List<Veiculo> lista() throws SQLException, ClassNotFoundException {
-		List<Veiculo> lista = new ArrayList<>();
-		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectAll());
-		ResultSet rs = pstmt.executeQuery();
-
-		while (rs.next()) {
-			Veiculo veiculo = new Veiculo();
-			System.out.println(rs);
-			veiculo.setId(rs.getString("id_veiculo"));
-			veiculo.setModelo(rs.getString("modelo"));
-			veiculo.setPlaca(rs.getString("placa"));
-			veiculo.setMotor(rs.getString("motor"));
-			veiculo.setAno(rs.getString("ano"));
-			lista.add(veiculo);
+	public List<Veiculo> lista() {
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		connection.close();
+		
+		try {
+			List<Veiculo> lista = new ArrayList<>();
+			PreparedStatement pstmt = connection.prepareStatement(sql.getSelectAll());
+			ResultSet rs = pstmt.executeQuery();
 
-		return lista;
+			while (rs.next()) {
+				Veiculo veiculo = new Veiculo();
+				System.out.println(rs);
+				veiculo.setId(rs.getString("id_veiculo"));
+				veiculo.setModelo(rs.getString("modelo"));
+				veiculo.setPlaca(rs.getString("placa"));
+				veiculo.setMotor(rs.getString("motor"));
+				veiculo.setAno(rs.getString("ano"));
+				lista.add(veiculo);
+			}
 
+			return lista;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
-	public Collection<String> listarVeiculo2015() throws SQLException, ClassNotFoundException {
-		ArrayList<String> linhas = new ArrayList<String>();
-		PreparedStatement stmtSelect = connection.prepareStatement(cs.getSelect2015());
-		ResultSet rs = stmtSelect.executeQuery();
-
-		while (rs.next()) {
-			String ano = rs.getString("ANO");
-			String placa = rs.getString("PLACA");
-			String modelo = rs.getString("MODELO");
-			String motor = String.valueOf(rs.getDouble("MOTOR"));
-
-			linhas.add(ano + " , " + placa + " , " + modelo + " , " + motor);
+	public Collection<String> listarVeiculo2015() {
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-
-		return linhas;
+		
+		try {
+			ArrayList<String> linhas = new ArrayList<String>();
+			PreparedStatement stmtSelect = connection.prepareStatement(sql.getSelect2015());
+			ResultSet rs = stmtSelect.executeQuery();
+	
+			while (rs.next()) {
+				String ano = rs.getString("ANO");
+				String placa = rs.getString("PLACA");
+				String modelo = rs.getString("MODELO");
+				String motor = String.valueOf(rs.getDouble("MOTOR"));
+	
+				linhas.add(ano + " , " + placa + " , " + modelo + " , " + motor);
+			}
+			return linhas;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 }

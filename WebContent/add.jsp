@@ -33,7 +33,7 @@
 	
 	        <div class="pure-control-group">
 	            <label for="motor">Motor</label>
-	            <input id=""motor" name="motor" type="text" placeholder="Motor" maxlength="3">
+	            <input id="motor" name="motor" type="text" placeholder="Motor" maxlength="3">
 	        </div>
 	
 	        <div class="pure-control-group">

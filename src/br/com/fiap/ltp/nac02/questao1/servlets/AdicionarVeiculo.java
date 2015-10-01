@@ -15,40 +15,32 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
  * Servlet implementation class ServletVeiculo
  */
 @WebServlet("/adicionar")
-public class ServletVeiculo extends HttpServlet {
+public class AdicionarVeiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ServletVeiculo() {
+	public AdicionarVeiculo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * @throws IOException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Veiculo veiculo = new Veiculo();
+		VeiculoDao veiculoDao = new VeiculoDao();
 
-		try {
-
-			Veiculo veiculo = new Veiculo();
-			VeiculoDao veiculoDao = new VeiculoDao();
-
-			veiculo.setModelo(request.getParameter("modelo"));
-			veiculo.setAno(request.getParameter("ano"));
-			veiculo.setPlaca(request.getParameter("placa"));
-			veiculo.setMotor(request.getParameter("motor"));
-			veiculoDao.inserir(veiculo);
-			response.sendRedirect("lista");
-
-		} catch (Exception e) {
-			e.getMessage();
-		}
-
+		veiculo.setModelo(request.getParameter("modelo"));
+		veiculo.setAno(request.getParameter("ano"));
+		veiculo.setPlaca(request.getParameter("placa"));
+		veiculo.setMotor(request.getParameter("motor"));
+		veiculoDao.inserir(veiculo);
+		response.sendRedirect("lista");
 	}
 
 	@Override

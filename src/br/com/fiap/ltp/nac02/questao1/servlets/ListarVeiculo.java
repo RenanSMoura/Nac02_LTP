@@ -1,7 +1,6 @@
 package br.com.fiap.ltp.nac02.questao1.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,13 +16,13 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
  * Servlet implementation class ServletVeiculoList
  */
 @WebServlet("/lista")
-public class ServletVeiculoList extends HttpServlet {
+public class ListarVeiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ServletVeiculoList() {
+	public ListarVeiculo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,19 +35,12 @@ public class ServletVeiculoList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		try {
-			VeiculoDao veiculoDao = new VeiculoDao();
-			List<Veiculo> lista = null;
-			// Lista todos os registros existente no Banco de Dados
-			lista = veiculoDao.lista();
+		VeiculoDao veiculoDao = new VeiculoDao();
+		List<Veiculo> lista = null;
+		lista = veiculoDao.lista();
 
-			getServletContext().setAttribute("veiculos", lista);
-			response.sendRedirect("main.jsp");
-
-		} catch (ClassNotFoundException | SQLException e) {
-
-			e.printStackTrace();
-		}
+		getServletContext().setAttribute("veiculos", lista);
+		response.sendRedirect("main.jsp");
 
 	}
 
