@@ -4,7 +4,7 @@ import java.io.*;
 
 /**
  * Gerador de arquivo
- * @author rm74390
+ * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
  */
 import java.util.ArrayList;
 

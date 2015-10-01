@@ -1,7 +1,7 @@
 package br.com.fiap.ltp.nac02.questao1.veiculo;
 /**
  * 
- * @author rm74390
+ * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
  *
  *JB classe Veiculo
  *

@@ -14,7 +14,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
  * 
- * @author rm74390
+ *@author rm74390 rm71411 rm71355 rm75011 1TDS-S
  * 
  * Servlet responsável pela exclusão de uma instância da Classe Veículo, contida no banco de dados
  * @see VeiculoDao.java

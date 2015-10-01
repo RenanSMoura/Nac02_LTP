@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
+ * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
+ * 
  * Classe responsável pela conexão com o banco Oracle
  * @see Connection
- * @author rm74390
- *
  */
 public class ConnectionFactory {
 	public Connection getConnection() throws ClassNotFoundException {
