@@ -25,7 +25,6 @@ public class ServletVeiculoArquivo extends HttpServlet {
 	 */
 	public ServletVeiculoArquivo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -34,14 +33,15 @@ public class ServletVeiculoArquivo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		VeiculoDao veiculoDao = new VeiculoDao();
-
-		ArrayList<String> linhas = new ArrayList<String>();
+		
 		GeraArquivo arquivo = new GeraArquivo();
-
+		
 		try {
+			VeiculoDao veiculoDao = new VeiculoDao();
+
+			ArrayList<String> linhas = new ArrayList<String>();
+			
+
 			linhas.addAll(veiculoDao.listarVeiculo2015());
 			arquivo.criaArquivo();
 			arquivo.preencherArquivo(linhas);

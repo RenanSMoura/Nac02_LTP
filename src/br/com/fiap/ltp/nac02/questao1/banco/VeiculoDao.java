@@ -10,12 +10,16 @@ import java.util.List;
 
 import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
-public class VeiculoDao extends Dao {
+public class VeiculoDao {
+	private Connection connection;
 	ComandosString cs = new ComandosString();
+	
+	public VeiculoDao() throws ClassNotFoundException {
+		this.connection = new ConnectionFactory().getConnection();
+	}
 
 	public void inserir(Veiculo veiculo) throws ClassNotFoundException, SQLException {
-		Connection connection = getConnection();
-
+		
 		PreparedStatement pstmt = connection.prepareStatement(cs.getInsert());
 		pstmt.setString(1, veiculo.getModelo());
 		pstmt.setString(2, veiculo.getPlaca());
@@ -30,8 +34,7 @@ public class VeiculoDao extends Dao {
 	}
 
 	public boolean buscar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-		Connection connection = getConnection();
-
+		
 		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectPlaca());
 		pstmt.setString(1, veiculo.getPlaca());
 
@@ -48,8 +51,7 @@ public class VeiculoDao extends Dao {
 	}
 
 	public void deletar(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-		Connection connection = getConnection();
-
+		
 		PreparedStatement pstmt = connection.prepareStatement(cs.getDelete());
 		pstmt.setString(1, veiculo.getPlaca());
 
@@ -73,8 +75,7 @@ public class VeiculoDao extends Dao {
 	}
 
 	public void alterarPlaca(Veiculo veiculo) throws SQLException, ClassNotFoundException {
-		Connection connection = getConnection();
-
+		
 		PreparedStatement pstmt = connection.prepareStatement(cs.getUpdatePlaca());
 		pstmt.setString(1, veiculo.getPlacaNova());
 		pstmt.setString(2, veiculo.getPlaca());
@@ -87,7 +88,6 @@ public class VeiculoDao extends Dao {
 	}
 
 	public List<Veiculo> lista() throws SQLException, ClassNotFoundException {
-		Connection connection = getConnection();
 		List<Veiculo> lista = new ArrayList<>();
 		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectAll());
 		ResultSet rs = pstmt.executeQuery();
@@ -109,7 +109,6 @@ public class VeiculoDao extends Dao {
 	}
 
 	public Collection<String> listarVeiculo2015() throws SQLException, ClassNotFoundException {
-		Connection connection = getConnection();
 		ArrayList<String> linhas = new ArrayList<String>();
 		PreparedStatement stmtSelect = connection.prepareStatement(cs.getSelect2015());
 		ResultSet rs = stmtSelect.executeQuery();

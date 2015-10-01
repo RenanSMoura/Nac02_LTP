@@ -36,11 +36,9 @@ public class ServletVeiculoList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		VeiculoDao veiculoDao = new VeiculoDao();
-		List<Veiculo> lista = null;
-
 		try {
-
+			VeiculoDao veiculoDao = new VeiculoDao();
+			List<Veiculo> lista = null;
 			// Lista todos os registros existente no Banco de Dados
 			lista = veiculoDao.lista();
 

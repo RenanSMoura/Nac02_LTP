@@ -34,11 +34,12 @@ public class ServletVeiculoChange extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Veiculo veiculo = new Veiculo();
-		VeiculoDao veiculoDao = new VeiculoDao();
-		boolean verifica = false;
-
 		try {
+
+			Veiculo veiculo = new Veiculo();
+			VeiculoDao veiculoDao = new VeiculoDao();
+			boolean verifica = false;
+
 			veiculo.setPlaca(request.getParameter("placa"));
 			veiculo.setPlacaNova(request.getParameter("placaNova"));
 			verifica = veiculoDao.buscar(veiculo);

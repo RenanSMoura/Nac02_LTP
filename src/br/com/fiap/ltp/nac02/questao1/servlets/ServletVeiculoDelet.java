@@ -35,11 +35,12 @@ public class ServletVeiculoDelet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		Veiculo veiculo = new Veiculo();
-		VeiculoDao veiculoDao = new VeiculoDao();
-		boolean verifica = false;
-
 		try {
+
+			Veiculo veiculo = new Veiculo();
+			VeiculoDao veiculoDao = new VeiculoDao();
+			boolean verifica = false;
+
 			veiculo.setPlaca(request.getParameter("placa"));
 			verifica = veiculoDao.verificaVeiculo(veiculo);
 			if (verifica)

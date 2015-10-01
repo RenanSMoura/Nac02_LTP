@@ -33,10 +33,10 @@ public class ServletVeiculo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Veiculo veiculo = new Veiculo();
-		VeiculoDao veiculoDao = new VeiculoDao();
-
 		try {
+
+			Veiculo veiculo = new Veiculo();
+			VeiculoDao veiculoDao = new VeiculoDao();
 
 			veiculo.setModelo(request.getParameter("modelo"));
 			veiculo.setAno(request.getParameter("ano"));
