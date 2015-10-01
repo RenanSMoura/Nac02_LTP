@@ -12,7 +12,7 @@
 <body>
 	<div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
 	    <ul class="pure-menu-list">
-	        <li class="pure-menu-item"><a href="lista" class="pure-menu-link">Listar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="main.jsp" class="pure-menu-link">Listar Veículo</a></li>
 	        <li class="pure-menu-item"><a href="add.jsp" class="pure-menu-link">Adicionar Veículo</a></li>
 	        <li class="pure-menu-item"><a href="change.jsp" class="pure-menu-link">Alterar Placa</a></li>
 	        <li class="pure-menu-item"><a href="delete.jsp" class="pure-menu-link">Excluir Veículo</a></li>
@@ -35,18 +35,26 @@
 	    </thead>
 	
 	    <tbody>
-	    	<c:forEach items="${veiculos}" var="veiculo">
-			    <tr>      
-			        <td>${veiculo.id}</td>
-			        <td>${veiculo.modelo}</td>
-			        <td>${veiculo.placa}</td>
-			        <td>${veiculo.ano}</td>
-			        <td>${veiculo.motor}</td>
-			        <!--td>
-		            	<a href="change.jsp?id=${veiculo.id}">Alterar</a> | <a href="delete?id=${veiculo.id}">Excluir</a>
-		            </td--> 
+	    	<c:choose>
+			  <c:when test="${empty veiculos}">
+			  	<tr>
+			    	<td colspan="5">Não existem veículos cadastrados</td>
 			    </tr>
-			</c:forEach>
+			  </c:when>
+			  <c:otherwise>
+			    <c:forEach items="${veiculos}" var="veiculo">
+				    <tr>      
+				        <td>${veiculo.id}</td>
+				        <td>${veiculo.modelo}</td>
+				        <td>${veiculo.placa}</td>
+				        <td>${veiculo.ano}</td>
+				        <td>${veiculo.motor}</td>
+				    </tr>
+				</c:forEach>
+			  </c:otherwise>
+			</c:choose>
+	    
+	    	
 	    </tbody>
 	</table>	
 </body>

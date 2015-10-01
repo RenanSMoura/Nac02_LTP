@@ -11,7 +11,7 @@
 <body>
 	<div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
 	    <ul class="pure-menu-list">
-	        <li class="pure-menu-item"><a href="lista" class="pure-menu-link">Listar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="main.jsp" class="pure-menu-link">Listar Veículo</a></li>
 	        <li class="pure-menu-item"><a href="add.jsp" class="pure-menu-link">Adicionar Veículo</a></li>
 	        <li class="pure-menu-item"><a href="change.jsp" class="pure-menu-link">Alterar Placa</a></li>
 	        <li class="pure-menu-item"><a href="delete.jsp" class="pure-menu-link">Excluir Veículo</a></li>
