@@ -16,7 +16,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
  *@author rm74390 rm71411 rm71355 rm75011 1TDS-S
- * Comandos de negócio do sistema
+ * Comandos de negï¿½cio do sistema
  * 
  * @see ComandosString
  * @see ConnectionFactory
@@ -34,7 +34,7 @@ public class VeiculoDao {
 	}
 	
 	/**
-	 * Insere uma instancia da classe  veículo no banco de dados
+	 * Insere uma instancia da classe  veï¿½culo no banco de dados
 	 * @param veiculo
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -55,7 +55,7 @@ public class VeiculoDao {
 
 	}
 	/**
-	 * Realiza a busca por uma instancia da clase veículo no banco de dados
+	 * Realiza a busca por uma instancia da clase veï¿½culo no banco de dados
 	 * @param veiculo
 	 * @return
 	 * @throws SQLException
@@ -79,7 +79,7 @@ public class VeiculoDao {
 			return true;
 	}
 	/**
-	 * Deleta uma instância da classe veículo do bando de dados
+	 * Deleta uma instï¿½ncia da classe veï¿½culo do bando de dados
 	 * @param veiculo
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -89,17 +89,19 @@ public class VeiculoDao {
 		
 		PreparedStatement pstmt = connection.prepareStatement(cs.getDelete());
 		pstmt.setString(1, veiculo.getPlaca());
-
-		pstmt.executeUpdate();
-		connection.commit();
-		pstmt.close();
+		
+		if(this.verificaVeiculo(veiculo)) {
+			pstmt.executeUpdate();
+			connection.commit();
+			pstmt.close();
+		}
 		connection.close();
 
 	}
 	/**
-	 *  Procura uma instância da classe veículo no banco de dados
+	 *  Procura uma instï¿½ncia da classe veï¿½culo no banco de dados
 	 * @param veiculo
-	 * @return Confirmação ou não da existência de determinada instância de veículo
+	 * @return Confirmaï¿½ï¿½o ou nï¿½o da existï¿½ncia de determinada instï¿½ncia de veï¿½culo
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
@@ -116,7 +118,7 @@ public class VeiculoDao {
 	}
 
 	/**
-	 * Altera o atributo .getPlaca() de uma instância da classe veículo do banco de dados
+	 * Altera o atributo .getPlaca() de uma instï¿½ncia da classe veï¿½culo do banco de dados
 	 * @param veiculo
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -126,17 +128,20 @@ public class VeiculoDao {
 		PreparedStatement pstmt = connection.prepareStatement(cs.getUpdatePlaca());
 		pstmt.setString(1, veiculo.getPlacaNova());
 		pstmt.setString(2, veiculo.getPlaca());
-
-		pstmt.executeUpdate();
-		connection.commit();
-		pstmt.close();
+		
+		if (this.buscar(veiculo)) {
+			pstmt.executeUpdate();
+			connection.commit();
+			pstmt.close();
+		}
+		
 		connection.close();
 
 	}
 	/**
-	 * Realiza a listagem de todas as instâncias que estão contidas dentro do banco de dados.
+	 * Realiza a listagem de todas as instï¿½ncias que estï¿½o contidas dentro do banco de dados.
 	 * @see ServletVeiculoList.java
-	 * @return Lista contendo instâncias da classe Veículos
+	 * @return Lista contendo instï¿½ncias da classe Veï¿½culos
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
@@ -161,9 +166,9 @@ public class VeiculoDao {
 
 	}
 	/**
-	 * Realiza uma listagem de todos os veículos que possuem seu ano de fabricação igual a 2015 e adiciona o resultado 
+	 * Realiza uma listagem de todos os veï¿½culos que possuem seu ano de fabricaï¿½ï¿½o igual a 2015 e adiciona o resultado 
 	 * da listagem em um arquivo @see GeraArquivo.java
-	 * @return lista de veículos 
+	 * @return lista de veï¿½culos 
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */

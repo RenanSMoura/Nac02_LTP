@@ -14,50 +14,45 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
 
 /**
  * 
- *@author rm74390 rm71411 rm71355 rm75011 1TDS-S
+ * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
  * 
- * Servlet responsável pela exclusão de uma instância da Classe Veículo, contida no banco de dados
+ *         Servlet responsï¿½vel pela exclusï¿½o de uma instï¿½ncia da Classe Veï¿½culo,
+ *         contida no banco de dados
  * @see VeiculoDao.java
  * 
  * @throws ServletException
- * @throws  IOException
- *  
+ * @throws IOException
+ * 
  * 
  */
 @WebServlet("/excluir")
 public class ServletVeiculoDelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	public ServletVeiculoDelet() {
 		super();
-		
-	}
 
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 
 		try {
 
 			Veiculo veiculo = new Veiculo();
 			VeiculoDao veiculoDao = new VeiculoDao();
-			boolean verifica = false;
 
 			veiculo.setPlaca(request.getParameter("placa"));
-			verifica = veiculoDao.verificaVeiculo(veiculo);
-			if (verifica)
-				veiculoDao.deletar(veiculo);
+			veiculoDao.deletar(veiculo);
 			response.sendRedirect("lista");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		
+
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
-		
+
 		}
 
 	}

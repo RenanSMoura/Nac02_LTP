@@ -16,7 +16,7 @@ import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
  *
  *@author rm74390 rm71411 rm71355 rm75011 1TDS-S
  * 
- * Servlet responsável alteração do atribuo PLACA, nas instâncias da classe Veiculo no banco de dados.
+ * Servlet responsï¿½vel alteraï¿½ï¿½o do atribuo PLACA, nas instï¿½ncias da classe Veiculo no banco de dados.
  * @see VeiculoDao.java 
  * 
  * @throws ServletException
@@ -34,7 +34,7 @@ public class ServletVeiculoChange extends HttpServlet {
 	}
 
 	/**
-	 * Método R
+	 * Mï¿½todo R
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -43,16 +43,12 @@ public class ServletVeiculoChange extends HttpServlet {
 
 			Veiculo veiculo = new Veiculo();
 			VeiculoDao veiculoDao = new VeiculoDao();
-			boolean verifica = false;
-
+			
 			veiculo.setPlaca(request.getParameter("placa"));
 			veiculo.setPlacaNova(request.getParameter("placaNova"));
-			verifica = veiculoDao.buscar(veiculo);
-			if (verifica) {
-				veiculoDao.alterarPlaca(veiculo);
-				response.sendRedirect("lista");
-			}
-
+			veiculoDao.alterarPlaca(veiculo);
+			response.sendRedirect("lista");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
