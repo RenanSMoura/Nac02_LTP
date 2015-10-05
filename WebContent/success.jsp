@@ -11,11 +11,11 @@
 <body>
 	<div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
 	    <ul class="pure-menu-list">
-	        <li class="pure-menu-item"><a href="main.jsp" class="pure-menu-link">Listar Veículo</a></li>
-	        <li class="pure-menu-item"><a href="add.jsp" class="pure-menu-link">Adicionar Veículo</a></li>
-	        <li class="pure-menu-item"><a href="change.jsp" class="pure-menu-link">Alterar Placa</a></li>
-	        <li class="pure-menu-item"><a href="delete.jsp" class="pure-menu-link">Excluir Veículo</a></li>
-	        <li class="pure-menu-item"><a href="gerar" class="pure-menu-link">Gerar Listagem CVS</a></li>
+	        <li class="pure-menu-item"><a href="read" class="pure-menu-link">Listar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="create" class="pure-menu-link">Adicionar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="update" class="pure-menu-link">Alterar Placa</a></li>
+	        <li class="pure-menu-item"><a href="delete" class="pure-menu-link">Excluir Veículo</a></li>
+	        <!--li class="pure-menu-item"><a href="gerar" class="pure-menu-link">Gerar Listagem CVS</a></li-->
 	    </ul>
 	</div>
 	

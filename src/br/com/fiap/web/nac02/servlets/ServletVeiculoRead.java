@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.servlets;
+package br.com.fiap.web.nac02.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,29 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
-import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
+import br.com.fiap.web.nac02.banco.VeiculoDao;
+import br.com.fiap.web.nac02.classes.Veiculo;
 
 /**
- *@author rm74390 rm71411 rm71355 rm75011 1TDS-S
+ * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
  * 
- * Servlet responsável por realizar a listagem das instâncias e mostra-lás na página jsp
- * @see main.jsp
- * @see VeiculoDao.java 
+ *         Servlet responsï¿½vel por realizar a listagem das instï¿½ncias e
+ *         mostra-lï¿½s na pï¿½gina jsp
+ * @see read.jsp
+ * @see VeiculoDao.java
  * @throws ServletException
- * @throws  IOException
+ * @throws IOException
  */
-@WebServlet("/lista")
-public class ServletVeiculoList extends HttpServlet {
+@WebServlet("/read")
+public class ServletVeiculoRead extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	public ServletVeiculoList() {
+	public ServletVeiculoRead() {
 		super();
 
 	}
-
-	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -40,11 +38,10 @@ public class ServletVeiculoList extends HttpServlet {
 		try {
 			VeiculoDao veiculoDao = new VeiculoDao();
 			List<Veiculo> lista = null;
-			
-			lista = veiculoDao.lista();
 
+			lista = veiculoDao.lista();
 			getServletContext().setAttribute("veiculos", lista);
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("read.jsp");
 
 		} catch (ClassNotFoundException | SQLException e) {
 

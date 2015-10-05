@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.veiculo;
+package br.com.fiap.web.nac02.classes;
 /**
  * 
  * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
@@ -27,7 +27,7 @@ public class Veiculo {
 	}
 	/*
 	 * 
-	 * Métodos Get's and Set's
+	 * Mï¿½todos Get's and Set's
 	 */
 
 	

@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.banco;
+package br.com.fiap.web.nac02.banco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,23 +8,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
-
-
-import br.com.fiap.ltp.nac02.questao1.servlets.ServletVeiculoList;
-import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
+import br.com.fiap.web.nac02.classes.Veiculo;
+import br.com.fiap.web.nac02.servlets.ServletVeiculoRead;
 
 /**
  *@author rm74390 rm71411 rm71355 rm75011 1TDS-S
  * Comandos de neg�cio do sistema
  * 
- * @see ComandosString
+ * @see StringsSql
  * @see ConnectionFactory
  */
 
 public class VeiculoDao {
 	private Connection connection;
-	ComandosString cs = new ComandosString();
+	StringsSql cs = new StringsSql();
 	
 	/*
 	 * Construtor da classe VeiculoDao
@@ -54,6 +51,23 @@ public class VeiculoDao {
 		connection.close();
 
 	}
+	
+	public String buscarId(Veiculo veiculo) throws SQLException, ClassNotFoundException {
+		
+		PreparedStatement pstmt = connection.prepareStatement(cs.getSelectId());
+		pstmt.setString(1, veiculo.getId());
+
+		ResultSet rs = pstmt.executeQuery();
+		String placa = new String("");
+
+		while (rs.next()) {
+			placa = rs.getString("PLACA");
+		}
+		
+		return placa;
+	}
+
+
 	/**
 	 * Realiza a busca por uma instancia da clase ve�culo no banco de dados
 	 * @param veiculo
@@ -140,7 +154,7 @@ public class VeiculoDao {
 	}
 	/**
 	 * Realiza a listagem de todas as inst�ncias que est�o contidas dentro do banco de dados.
-	 * @see ServletVeiculoList.java
+	 * @see ServletVeiculoRead.java
 	 * @return Lista contendo inst�ncias da classe Ve�culos
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -161,7 +175,9 @@ public class VeiculoDao {
 			lista.add(veiculo);
 		}
 		connection.close();
-
+		
+		System.out.println(lista);
+		
 		return lista;
 
 	}

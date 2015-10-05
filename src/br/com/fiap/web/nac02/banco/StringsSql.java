@@ -1,10 +1,10 @@
-package br.com.fiap.ltp.nac02.questao1.banco;
+package br.com.fiap.web.nac02.banco;
 
 /**
  * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
- * Classe com querys responsáveis pela manipulação do banco de dados
+ * Classe com querys responsï¿½veis pela manipulaï¿½ï¿½o do banco de dados
  */
-public class ComandosString {
+public class StringsSql {
 	/*
 	 * Atributos
 	 */
@@ -23,8 +23,10 @@ public class ComandosString {
 	
 	private String select2015 = new String ("SELECT * FROM TB_LTP_VEICULO WHERE ANO = '2015'");
 	
+	private String selectId = new String ("SELECT * FROM TB_LTP_VEICULO WHERE ID_VEICULO = ?");
+	
 	/*
-	 * Métodos Get's and Set's
+	 * Mï¿½todos Get's and Set's
 	 */
 
 	public String getInsert() {
@@ -45,11 +47,16 @@ public class ComandosString {
 	}
 
 	public String getSelectAll() {
+		System.out.println(selectAll);
 		return selectAll;
 	}
 
 	public String getSelect2015() {
 		return select2015;
+	}
+
+	public String getSelectId() {
+		return selectId;
 	}
 
 }

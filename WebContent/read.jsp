@@ -12,11 +12,11 @@
 <body>
 	<div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
 	    <ul class="pure-menu-list">
-	        <li class="pure-menu-item"><a href="main.jsp" class="pure-menu-link">Listar Veículo</a></li>
-	        <li class="pure-menu-item"><a href="add.jsp" class="pure-menu-link">Adicionar Veículo</a></li>
-	        <li class="pure-menu-item"><a href="change.jsp" class="pure-menu-link">Alterar Placa</a></li>
-	        <li class="pure-menu-item"><a href="delete.jsp" class="pure-menu-link">Excluir Veículo</a></li>
-	        <li class="pure-menu-item"><a href="gerar" class="pure-menu-link">Gerar Listagem CVS</a></li>
+	        <li class="pure-menu-item"><a href="read" class="pure-menu-link">Listar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="create" class="pure-menu-link">Adicionar Veículo</a></li>
+	        <li class="pure-menu-item"><a href="update" class="pure-menu-link">Alterar Placa</a></li>
+	        <li class="pure-menu-item"><a href="delete" class="pure-menu-link">Excluir Veículo</a></li>
+	        <!--li class="pure-menu-item"><a href="gerar" class="pure-menu-link">Gerar Listagem CVS</a></li-->
 	    </ul>
 	</div>
 	
@@ -30,7 +30,7 @@
 	            <th>Placa</th>
 	            <th>Ano</th>
 	            <th>Motor</th>
-	            <!--th>Ações</th-->
+	            <th>Ações</th>
 	        </tr>
 	    </thead>
 	
@@ -38,7 +38,7 @@
 	    	<c:choose>
 			  <c:when test="${empty veiculos}">
 			  	<tr>
-			    	<td colspan="5">Não existem veículos cadastrados</td>
+			    	<td colspan="6">Não existem veículos cadastrados</td>
 			    </tr>
 			  </c:when>
 			  <c:otherwise>
@@ -49,6 +49,9 @@
 				        <td>${veiculo.placa}</td>
 				        <td>${veiculo.ano}</td>
 				        <td>${veiculo.motor}</td>
+				        <td>
+				        	<a href="update?id=${veiculo.id}">Editar</a> | <a href="delete?id=${veiculo.id}">Excluir</a>
+				        </td>
 				    </tr>
 				</c:forEach>
 			  </c:otherwise>

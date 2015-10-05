@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.servlets;
+package br.com.fiap.web.nac02.servlets;
 
 import java.io.IOException;
 
@@ -8,41 +8,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.fiap.ltp.nac02.questao1.banco.VeiculoDao;
-import br.com.fiap.ltp.nac02.questao1.veiculo.Veiculo;
+import br.com.fiap.web.nac02.banco.VeiculoDao;
+import br.com.fiap.web.nac02.classes.Veiculo;
 
 /**
  *
- *@author rm74390
+ * @author rm74390
  *
- *Servlet responsável por realizar o cadastro do veículo no banco de dados
- * @see VeiculoDao.java 
+ *         Servlet responsï¿½vel por realizar o cadastro do veï¿½culo no banco de
+ *         dados
+ * @see VeiculoDao.java
  * 
  * @throws ServletException
- * @throws  IOException
+ * @throws IOException
  * 
  */
-@WebServlet("/adicionar")
-public class ServletVeiculo extends HttpServlet {
+@WebServlet("/create")
+public class ServletVeiculoCreate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	public ServletVeiculo() {
+	public ServletVeiculoCreate() {
 		super();
 
 	}
 
-
 	/**
-
-	 *   
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		response.sendRedirect("create.jsp");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 
 		try {
-
 			Veiculo veiculo = new Veiculo();
 			VeiculoDao veiculoDao = new VeiculoDao();
 
@@ -51,17 +59,11 @@ public class ServletVeiculo extends HttpServlet {
 			veiculo.setPlaca(request.getParameter("placa"));
 			veiculo.setMotor(request.getParameter("motor"));
 			veiculoDao.inserir(veiculo);
-			response.sendRedirect("lista");
+			response.sendRedirect("read");
 
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
 	}
-
-	@Override
-	public void init() throws ServletException {
-		super.init();
-	}
-
 }

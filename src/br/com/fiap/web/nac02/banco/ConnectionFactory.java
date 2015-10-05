@@ -1,4 +1,4 @@
-package br.com.fiap.ltp.nac02.questao1.banco;
+package br.com.fiap.web.nac02.banco;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 /**
  * @author rm74390 rm71411 rm71355 rm75011 1TDS-S
  * 
- * Classe responsável pela conexão com o banco Oracle
+ * Classe responsï¿½vel pela conexï¿½o com o banco Oracle
  * @see Connection
  */
 public class ConnectionFactory {
